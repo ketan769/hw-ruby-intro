@@ -5,21 +5,21 @@
 def sum arr
   ans=0
   arr.each do |i|
-      ans+=i 
+      ans+=i#take each number one by one and add it to the answer variable 
   end
-  ans
+  ans#last command call is returned as the output  
 end    
 
 def max_2_sum arr
   if arr.length==0
-    return 0
+    return 0#returns zero if array empty
   end
   if arr.length==1
-    return arr[0]
+    return arr[0]#returns the element if array has only one element
   end
   l=0
-  score=-2**31
-  
+  score=-2**31#intialize a large negative score 
+  #Run a double loop to find pairs and check their sum 
   for i in arr
     l+=1
     w=arr.length-1
@@ -30,7 +30,7 @@ def max_2_sum arr
         end
     end
   end
-  score
+  score#last command call is returned as the output  
 end
 
 
@@ -45,7 +45,7 @@ def sum_to_n? arr, n
       return false
     end
   end
-
+#Run a double loop to find pairs and check their sum 
   l=0
   for i in arr
     l+=1
@@ -53,27 +53,27 @@ def sum_to_n? arr, n
     for j in arr[l,w]
         
         temp=i+j
-        if temp==n
+        if temp==n#sum of any two equals to target n then returns true 
             return true
         end
     end
   end
-  return false
+  return false#if not able to return true then returns false
 end
 
 # # Part 2
 def hello(name)
-  "Hello,"+" "+name.to_s
+  "Hello,"+" "+name.to_s#using add "+" we can concatinate the string and since this is the last argument it will be returned as output
 end
 
 
 def starts_with_consonant? s
-  s.strip
+  s.strip#removes white spaces
   if s.length==0
-    return false
+    return false#if string empyt then return false
   end 
   
-  if s.match(/^[bcdfghjklmnpqrstvwxyz]/i)
+  if s.match(/^[bcdfghjklmnpqrstvwxyz]/i)#checking with all consonants 
       return true
   else
       return false
