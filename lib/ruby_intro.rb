@@ -91,15 +91,14 @@ def binary_multiple_of_4? s
   num=0
   k=0
   while l>=0 do
-    # puts s[l]
-    if s[l].match(/[^\d]/)
+    if s[l].match(/[^\d]/)#if charachter not a digit then return false 
       return false
     end
-    num+=s[l].to_i*(2**k)
+    num+=s[l].to_i*(2**k)#if it is a digit then multiply it with power of 2 which is incremented at every iteration
     l-=1
     k+=1
   end
-  if num%4==0 
+  if num%4==0 #check if the number has remainder zero divided by four then return true else false 
       return  true
   else
       return false
@@ -109,24 +108,23 @@ end
 
 class BookInStock
 
-  attr_accessor :isbn,:price
+  attr_accessor :isbn,:price#use attribute accessors to generate code on runtime to add and read book "isbn" and "price"
 
   def initialize (isbn,price)
     isbn=isbn.strip  
-    raise ArgumentError,"ISBN cannot be empty" if isbn.length==0
-    raise ArgumentError,"ISBN cannot be empty" if isbn.length==0
-    raise ArgumentError,"Cannot enter string in price" if price.is_a?(String)
-    raise ArgumentError,"Cannot enter string in price" if price<=0 
+    raise ArgumentError,"ISBN cannot be empty" if isbn.length==0#raise error length empty "isbn"
+    raise ArgumentError,"Cannot enter string in price" if price.is_a?(String)#error if price is a string rather than float
+    raise ArgumentError,"Cannot enter string in price" if price<=0 #error if price entered is less than zero
     @isbn=isbn.to_s
     @price=price.to_f
   end
 
   def price_as_string
     if self.price.to_s.match(/.\d\d$/)
-      val="$"+self.price.to_s
+      val="$"+self.price.to_s #if price ending with two zeros then return string with '$' at the start
       return val   
     else
-      val="$"+@price.to_s+"0"
+      val="$"+@price.to_s+"0" #if price ending with one zero then return string with '$' at the start and zero at the end 
       return val
     end
   end   
